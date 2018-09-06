@@ -41,10 +41,21 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>devutility.test.log.log4j2</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>devutility.test.log.log4j2.DUT_Log_Log4j2App</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
