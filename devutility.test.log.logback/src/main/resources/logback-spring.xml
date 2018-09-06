@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-	<contextName>logback</contextName>
+<configuration debug="true">
 	<property name="Log_Home" value="logs" />
-	<property name="Log_Pattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{50} - %msg%n" />
+	<property name="Log_Pattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger - %msg%n" />
+	<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
 
 	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -12,7 +12,6 @@
 	</appender>
 
 	<appender name="RollingFile_Error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${Log_Home}/app-error.log</file>
 		<prudent>true</prudent>
 		<encoder>
 			<pattern>${Log_Pattern}</pattern>
@@ -31,18 +30,15 @@
 	</appender>
 
 	<appender name="RollingFile_Other" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${Log_Home}/app-other.log</file>
 		<prudent>true</prudent>
 		<encoder>
 			<pattern>${Log_Pattern}</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
-		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-			<evaluator>
-				<expression>return level < ERROR;</expression>
-			</evaluator>
-			<OnMismatch>NEUTRAL</OnMismatch>
-			<OnMatch>DENY</OnMatch>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>DENY</onMatch>
+			<onMismatch>NEUTRAL</onMismatch>
 		</filter>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<FileNamePattern>${Log_Home}/%d{yyyy-MM}/%d{dd}/app-other-%d{HH-mm}.%i.log</FileNamePattern>
