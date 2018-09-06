@@ -14,6 +14,13 @@ public class LogController extends BaseController {
 		logger.warn(message);
 		logger.error(message);
 		System.out.println(message);
+
+		try {
+			System.out.println(3 / 0);
+		} catch (Exception e) {
+			logger.error(null, e);
+		}
+
 		return message;
 	}
 }
