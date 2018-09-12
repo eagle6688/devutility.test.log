@@ -54,7 +54,6 @@
 			</Policies>
 		</RollingRandomAccessFile>
 		<Async name="Async">
-			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingRandomAccessFile_Warn" />
 			<AppenderRef ref="RollingRandomAccessFile_Error" />
 			<AppenderRef ref="RollingRandomAccessFile_Other" />
@@ -62,6 +61,7 @@
 	</Appenders>
 	<Loggers>
 		<Root level="INFO">
+			<AppenderRef ref="Console" />
 			<AppenderRef ref="Async" />
 		</Root>
 	</Loggers>
