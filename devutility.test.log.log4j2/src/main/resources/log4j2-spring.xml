@@ -64,5 +64,8 @@
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="Async" />
 		</Root>
+		<Logger name="devutility.test.log.log4j2.controller.TestController" level="TRACE" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
 	</Loggers>
 </Configuration>
