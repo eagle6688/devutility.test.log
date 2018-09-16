@@ -8,7 +8,7 @@ public abstract class BaseController {
 
 	protected Logger getLogger() {
 		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-		StackTraceElement stackTraceElement = stackTraceElements[1];
+		StackTraceElement stackTraceElement = stackTraceElements[2];
 		return LoggerFactory.getLogger(stackTraceElement.getClassName());
 	}
 }
